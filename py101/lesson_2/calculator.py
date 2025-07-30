@@ -6,7 +6,6 @@ def invalid_number(number_str):
         int(number_str)
     except ValueError:
         return True
-    
     return False
 
 prompt('Welcome to Calculator!')
