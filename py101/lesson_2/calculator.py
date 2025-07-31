@@ -4,54 +4,69 @@ import json
 with open('calculator_messages.json', 'r') as file:
     MESSAGES = json.load(file)
 
-def prompt(message):
-    print(f'==> {message}')
+LANGUAGE = 'en'
 
-def invalid_number(number_str):
+def prompt(key: str, **kwargs):
+    message = MESSAGES[LANGUAGE][key].format(**kwargs)
+    print(f'=> {message}')
+
+def get_valid_number(prompt_key: str) -> float:
+    prompt(prompt_key)
+    num = input()
+    while not is_valid_number(num):
+        prompt('invalid_number')
+        num = input()
+    return float(num)
+
+def is_valid_number(s: str) -> bool:
     try:
-        int(number_str)
-    except ValueError:
+        float(s)
         return True
-    return False
+    except ValueError:
+        return False
+
+def get_operation() -> str:
+    prompt('which_operation')
+    op = input()
+    while op not in ['1', '2', '3', '4']:
+        prompt('invalid_operation')
+        op = input()
+    return op
 
 def perform_calculation():
-    prompt(MESSAGES['first_number'])
-    num1 = input()
-    while invalid_number(num1):
-        prompt(MESSAGES['invalid_number'])
-        num1 = input()
+    x = get_valid_number('first_number')
+    y = get_valid_number('second_number')
+    op = get_operation()
 
-    prompt(MESSAGES['second_number'])
-    num2 = input()
-    while invalid_number(num2):
-        prompt(MESSAGES['invalid_number'])
-        num2 = input()
-
-    prompt(MESSAGES['which_operation'])
-    operation = input()
-    while operation not in ['1', '2', '3', '4']:
-        prompt(MESSAGES['invalid_operation'])
-        operation = input()
-
-    match operation:
+    match op:
         case '1':
-            output = int(num1) + int(num2)
+            output = x + y
         case '2':
-            output = int(num1) - int(num2)
+            output = x - y
         case '3':
-            output = int(num1) * int(num2)
+            output = x * y
         case '4':
-            output = int(num1) / int(num2)
+            try:
+                output = x / y
+            except ZeroDivisionError:
+                prompt('zero_division')
+                return
 
-    prompt(f'{MESSAGES["result"]} {output}')
+    if output.is_integer():
+        output = int(output)
 
-# main program
-prompt(MESSAGES['welcome'])
-again = 'y'
-while again == 'y':
-    perform_calculation()
-    prompt(MESSAGES['new_calculation'])
-    again = input().lower()
-    while again not in ['y', 'n']:
-        prompt(MESSAGES['invalid_new'])
-        again = input().lower()
+    prompt('result', output=output)
+
+def main():
+    prompt('welcome')
+    again = 'y'
+    while again == 'y':
+        perform_calculation()
+        prompt('new_calculation')
+        again = input().strip().lower()
+        while again not in ['y', 'n']:
+            prompt('invalid_new')
+            again = input().strip().lower()
+
+if __name__ == '__main__':
+    main()

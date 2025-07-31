@@ -1,11 +1,38 @@
 {
-    "welcome": "Welcome to Calculator!",
-    "first_number": "What's the first number?",
-    "second_number": "What's the second number?",
-    "invalid_number": "Please enter a valid number.",
-    "which_operation": "Which operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
-    "invalid_operation": "Please choose 1, 2, 3, or 4.",
-    "result": "The result is:",
-    "new_calculation": "Would you like to perform a new calculation? (y/n)",
-    "invalid_new": "Please type y or n"
+    "en": {
+        "welcome": "Welcome to Calculator!",
+        "first_number": "What's the first number?",
+        "second_number": "What's the second number?",
+        "invalid_number": "Please enter a valid number.",
+        "which_operation": "Which operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+        "invalid_operation": "Please choose 1, 2, 3, or 4.",
+        "zero_division": "Can't divide by zero.",
+        "result": "The result is: {output}",
+        "new_calculation": "Would you like to perform a new calculation? (y/n)",
+        "invalid_new": "Please type 'y' or 'n'."
+    },
+    "es": {
+        "welcome": "¡Bienvenido a la Calculadora!",
+        "first_number": "¿Cuál es el primer número?",
+        "second_number": "¿Cuál es el segundo número?",
+        "invalid_number": "Por favor, introduzca un número válido.",
+        "which_operation": "¿Qué operación desea realizar?\n1) Sumar 2) Restar 3) Multiplicar 4) Dividir",
+        "invalid_operation": "Por favor, elija 1, 2, 3 o 4.",
+        "zero_division": "No se puede dividir por cero.",
+        "result": "El resultado es: {output}",
+        "new_calculation": "¿Desea realizar un nuevo cálculo? (y/n)",
+        "invalid_new": "Por favor, escriba 'y' o 'n'."
+    },
+    "fr": {
+        "welcome": "Bienvenue sur la calculatrice!",
+        "first_number": "Quel est le premier nombre?",
+        "second_number": "Quel est le deuxième nombre?",
+        "invalid_number": "Veuillez saisir un nombre valide.",
+        "which_operation": "Quelle opération souhaitez-vous effectuer?\n1) Additionner 2) Soustraire 3) Multiplier 4) Diviser",
+        "invalid_operation": "Veuillez choisir 1, 2, 3 ou 4.",
+        "zero_division": "Impossible de diviser par zéro.",
+        "result": "Le résultat est: {output}",
+        "new_calculation": "Voulez-vous effectuer un nouveau calcul? (y/n)",
+        "invalid_new": "Veuillez saisir 'y' ou 'n'."
+    }
 }
