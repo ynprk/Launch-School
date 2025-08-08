@@ -31,14 +31,27 @@ def perform_calculation():
 
 def main():
     prompt('Welcome to Mortgage / Car Loan Calculator!')
-    again = 'y'
-    while again == 'y':
+
+    # version 1: explicit condition loop
+    # again = 'y'
+    # while again == 'y':
+    #     perform_calculation()
+    #     prompt('Would you like to perform a new calculation? (y/n)')
+    #     again = input().strip().lower()
+    #     while again not in ('y', 'n'):
+    #         prompt("Please type 'y' or 'n'")
+    #         again = input().strip().lower()
+
+    # version 2: while True with break
+    while True:
         perform_calculation()
         prompt('Would you like to perform a new calculation? (y/n)')
         again = input().strip().lower()
         while again not in ('y', 'n'):
             prompt("Please type 'y' or 'n'")
             again = input().strip().lower()
+        if again == 'n':
+            break
 
 if __name__ == '__main__':
     main()
