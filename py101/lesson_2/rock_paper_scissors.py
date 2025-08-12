@@ -73,6 +73,7 @@ def main():
             computer_score += 1
 
         prompt(f"You: {player_score} -- Computer: {computer_score}")
+        prompt(f"-------------------------------------------------")
 
     if player_score > computer_score:
         prompt("You win the best of five!")
