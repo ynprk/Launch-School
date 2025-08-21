@@ -170,6 +170,9 @@ def utf16_value(chars: str) -> int:
         total += ord(char)
     return total
 
+def utf16_value_one_liner(chars: str) -> int:
+    return sum(ord(char) for char in chars)
+
 # These examples should all print True
 print(utf16_value('Four score') == 984)
 print(utf16_value('Launch School') == 1251)
