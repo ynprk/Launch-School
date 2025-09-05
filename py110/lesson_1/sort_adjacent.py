@@ -102,7 +102,7 @@ def count_max_adjacent_consonants(s):
     run = 0
 
     for c in s:
-        if c not in 'aeiou':
+        if c.isalpha() and c.lower() not in 'aeiou':
             run += 1
             if run > 1:
                 max_run = max(max_run, run)

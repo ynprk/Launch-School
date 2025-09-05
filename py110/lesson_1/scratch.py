@@ -137,12 +137,61 @@ def palindrome_substrings(s):
 
     return result
 
-print(palindrome_substrings("abcddcbA"))   # ["bcddcb", "cddc", "dd"]
-print(palindrome_substrings("palindrome")) # []
-print(palindrome_substrings(""))           # []
-print(palindrome_substrings("repaper"))
-# ['repaper', 'epape', 'pap']
+# print(palindrome_substrings("abcddcbA"))   # ["bcddcb", "cddc", "dd"]
+# print(palindrome_substrings("palindrome")) # []
+# print(palindrome_substrings(""))           # []
+# print(palindrome_substrings("repaper"))
+# # ['repaper', 'epape', 'pap']
 
-print(palindrome_substrings("supercalifragilisticexpialidocious"))
-# ["ili"]
-print(palindrome_substrings("abb  bba"))
+# print(palindrome_substrings("supercalifragilisticexpialidocious"))
+# # ["ili"]
+# print(palindrome_substrings("abb  bba"))
+
+
+produce = {
+    'apple': 'Fruit',
+    'carrot': 'Vegetable',
+    'pear': 'Fruit',
+    'broccoli': 'Vegetable',
+}
+
+def select_fruit(produce: dict) -> dict:
+    fruit = {}
+    for crop, type in produce.items():
+        if type == 'Fruit':
+            fruit[crop] = type
+    return fruit
+
+
+print(select_fruit(produce))  # { apple: 'Fruit', pear: 'Fruit' }
+
+def double_numbers(numbers):
+    for i in range(len(numbers)):
+        numbers[i] *= 2
+
+
+my_numbers = [1, 4, 3, 7, 2, 6]
+print(double_numbers(my_numbers)) # [2, 8, 6, 14, 4, 12]
+print(my_numbers)                 # [1, 4, 3, 7, 2, 6]
+
+def double_odd_indices(numbers):
+    doubled_nums = []
+
+    for idx, num in enumerate(numbers):
+        if idx % 2 == 1:
+            doubled_nums.append(num * 2)
+        else:
+            doubled_nums.append(num)
+
+    return doubled_nums
+
+my_numbers = [1, 4, 3, 7, 2, 6]
+print(double_odd_indices(my_numbers)) # [1, 8, 3, 14, 2, 12]
+print(my_numbers)                 # [1, 4, 3, 7, 2, 6]
+
+
+def multiply(nums: list, multiplier: int) -> list:
+    return [num * multiplier for num in nums]
+
+my_numbers = [1, 4, 3, 7, 2, 6]
+print(multiply(my_numbers, 3))  # [3, 12, 9, 21, 6, 18]
