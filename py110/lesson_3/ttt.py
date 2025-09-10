@@ -20,7 +20,7 @@ def display_board(board):
             print('-----+-----+-----')
         print()
 
-def empty_squares(board):
+def get_empty_squares(board):
     return [i for i, c in enumerate(board) if c is EMPTY]
 
 def determine_winner(board):
@@ -29,11 +29,11 @@ def determine_winner(board):
             return HUMAN if board[a] == HUMAN else COMPUTER
     return None
 
-def full(board):
+def is_full(board):
     return all(board)
 
 def ask_move(board):
-    valid_choices = [str(i+1) for i in empty_squares(board)]
+    valid_choices = [str(i+1) for i in get_empty_squares(board)]
 
     while True:
         move = input(f'Choose a square ({", ".join(valid_choices)}): ').strip()
@@ -47,10 +47,10 @@ def play():
         display_board(board)
 
         board[ask_move(board)] = HUMAN
-        if (winner := determine_winner(board)) or full(board): break
+        if (winner := determine_winner(board)) or is_full(board): break
 
-        board[random.choice(empty_squares(board))] = COMPUTER
-        if (winner := determine_winner(board)) or full(board): break
+        board[random.choice(get_empty_squares(board))] = COMPUTER
+        if (winner := determine_winner(board)) or is_full(board): break
 
     display_board(board)
     print(f'{winner} wins!' if winner else "It's a tie!")
@@ -59,9 +59,17 @@ def main():
     while True:
         print(f'Welcome to Tic Tac Toe! You = {HUMAN}, Computer = {COMPUTER}')
         play()
-        if input('Play again? (y/n) : ').strip().lower() != 'y':
-            print('Bye-bye')
+
+        while True:
+            again = input('Play again? (y/n) : ').strip().lower()
+            if again in ('y', 'n'):
+                break
+            print('Please enter y or n.')
+        
+        if again == 'n':
+            print('Bye-bye.')
             break
+
 
 if __name__ == '__main__':
     main()
